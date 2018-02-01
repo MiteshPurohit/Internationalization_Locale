@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" [
+<!ENTITY contextInclude SYSTEM "org/springframework/web/context/WEB-INF/contextInclude.xml">
+]>
+
+<beans>
+    
+    <!-- Bean of Triangle Class -->
+    <bean id="inter" class="org.java.Internationalization">
+        <property name="rbm" ref="messageSource"/>
+    </bean>
+
+    <!-- Bean of ResourceBundleMessageSource Class -->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <!--<property name="basename" value="myMsg"/>-->  <!-- If you have single Property File -->
+        <property name="basenames">  <!-- If you have multiple Property Files -->
+            <list>  <!-- use wiring collection to provide multiple file name -->
+                <value>language</value>   <!-- filename_LanguageRegion -->
+            </list>                       <!-- provide only file name -->
+        </property>        
+    </bean>
+    
+</beans>
